@@ -15,14 +15,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Initialize with views defined in Layout - the first one is done for you
+        // Initialize with views defined in Layout
         displayTextView = findViewById(R.id.displayTextView)
 
-        
         findViewById<Button>(R.id.clickMeButton).setOnClickListener {
-            displayTextView.text = "Hello, ${findViewById<EditText>(R.id.nameEditText).text}"
+            if (findViewById<EditText>(R.id.nameEditText).text.isEmpty()) {
+                findViewById<Button>(R.id.clickMeButton).text = "Error"
+            } else {
+                displayTextView.text = "Hello, ${findViewById<EditText>(R.id.nameEditText).text}"
+            }
         }
-
-
     }
 }
